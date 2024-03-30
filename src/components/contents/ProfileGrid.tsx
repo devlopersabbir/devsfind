@@ -23,12 +23,12 @@ const ProfileGrid = async ({ page, searchParams }: Props) => {
   const currentPage = parseInt(page); // like 1
   const itemPerPage = 5; // we want to show 5 item in per pages
   const offset = (currentPage - 1) * itemPerPage; // (1 - 1) * 3 = 0
-  const searchSkills = searchParams ? searchParams.split(/[\s,]+/) : []; // regular expression to accept inputs separated by comma, space or both
+  const searchSkills = searchParams ? searchParams.toLowerCase().split(/[\s,]+/) : []; // regular expression to accept inputs separated by comma, space or both
 
   // In order to get rid of the "error: operator does not exist: json @> json" I mannually cast the skills column to JSONB
-  const skillsCondition = searchSkills.length > 0 
-  ? sql.raw(`"skills"::JSONB @> '${JSON.stringify(searchSkills)}'::JSONB`) 
-  : undefined;
+  const skillsCondition = searchSkills.length > 0
+    ? sql.raw(`lower("skills"::text)::JSONB @> '${JSON.stringify(searchSkills.map(skill => skill.toLowerCase()))}'::JSONB`)
+    : undefined;
 
   const [lengths, profiles] = await Promise.all([
     db.select({ count: sql<number>`count(*)` }).from(users),
