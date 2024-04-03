@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Github, LucideLinkedin } from "lucide-react";
 import { ModeToggle } from "../../theme/Toggle";
 import ProfileAdd from "./ProfileAdd";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 
 const Sidebar = () => {
   return (
@@ -42,6 +44,8 @@ const Sidebar = () => {
         </Link>
         <Link target="_blank" href="https://www.linkedin.com/in/devlopersabbir">
           <LucideLinkedin size={30} />
+        </Link>
+        <Link target='https://discord.gg/kC7NFQDjR4'><FontAwesomeIcon icon={faDiscord} size='1.5x' /> 
         </Link>
       </footer>
     </div>
