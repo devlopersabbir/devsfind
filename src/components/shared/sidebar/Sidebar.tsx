@@ -2,7 +2,7 @@ import { Logo } from "@/constants";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Bot, Github, Linkedin } from 'lucide-react'
+import { LucideBot, LucideGithub, LucideLinkedin } from "lucide-react";
 import { ModeToggle } from "../../theme/Toggle";
 import ProfileAdd from "./ProfileAdd";
 
@@ -38,12 +38,13 @@ const Sidebar = () => {
           href="https://github.com/devlopersabbir/find-devs"
           target="_blank"
         >
-          <Github size={30} />
+          <LucideGithub size={30} />
         </Link>
         <Link target="_blank" href="https://www.linkedin.com/in/devlopersabbir">
-          <Linkedin size={30} />
+          <LucideLinkedin size={30} />
         </Link>
-        <Link target='https://discord.gg/kC7NFQDjR4'><Bot size={30} />
+        <Link href="https://discord.gg/kC7NFQDjR4" target="_blank">
+          <LucideBot size={30} />
         </Link>
       </footer>
     </div>
